@@ -64,29 +64,20 @@ output = widgets.Output()
 def on_button_clicked(event):
     with output:
         clear_output()
-        %env rtoruri= {toruri.value}
-        %env RCLOUDNAME= {cloudname.value}
-        %env rthreats={threads.value}
-        ℅env rrandom=$RANDOM
-        ! echo "$rtoruri"
-        ! echo "$rtoruri" >/urlraw
-        %mkdir /rtemporary
-        %mkdir /rtemporary/$rrandom
-        ! cat urlraw  >/rtemporary/$rrandom/urls.txt
+        ! echo "$toruri" >/urlraw
+        ! cat urlraw |sed 's/(/\n/g' |sed 's/,/\n/g' |grep value |sed 's/value=//g' |sed "s/'//g" |sed 's/ /\n/g' |grep 'http\|https\|magnet' >/urls.txt
         #rclone version
-        ℅mkdir /home/$rrandom
-        %mkdir /home/$rrandom/$RCLOUDNAME
-        %cd /home/$rrandom/$RCLOUDNAME
+        %mkdir /home/{cloudname.value}
+        %cd /home/{cloudname.value}
         ! rclone copy /Essential-Files/d {cloudname.value}:
         ! touch /progression.log
         clear_output()
         ! echo "Your File is downloading.. don't close this tab"
-        ! while sleep 60; do clear; cat /progression.log | grep ETA: |tail -1; if grep --quiet 'SEED\|(OK):download completed' '/progression.log'; then pkill aria2c; fi; done & aria2c --dir=/home/$rrandom/$RCLOUDNAME --input-file=/rtemporary/$rrandom/urls.txt --max-concurrent-downloads=1 --connect-timeout=60 --max-connection-per-server="$rthreats" --split="{threats.value}" --min-split-size=1M --human-readable=true --download-result=full --file-allocation=none >/progression.log
+        ! while sleep 60; do clear; cat /progression.log | grep ETA: |tail -1; if grep --quiet 'SEED\|(OK):download completed' '/progression.log'; then pkill aria2c; fi; done & aria2c --dir=/home/{cloudname.value} --input-file=/urls.txt --max-concurrent-downloads=1 --connect-timeout=60 --max-connection-per-server="{threats.value}" --split="{threats.value}" --min-split-size=1M --human-readable=true --download-result=full --file-allocation=none >/progression.log
         ! echo 'Download Complete'
         ! echo 'Uploading Started'
-        ! rclone copy --progress --stats-one-line /home/$rrandom/$RCLOUDNAME {cloudname.value}:
+        ! rclone copy --progress --stats-one-line /home/{cloudname.value} {cloudname.value}:
         print(f"Your file uploaded to {cloudname.value} at {threats.value} x threads")
-        ! ls /home/$rrandom/$RCLOUDNAME |sed 's/.aria2/ Failed to download/g' 
 button_send.on_click(on_button_clicked)
 vbox_result = widgets.VBox([button_send, output])
 
