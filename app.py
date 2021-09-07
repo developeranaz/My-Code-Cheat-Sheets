@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import numpy as np
+import os
 
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
@@ -14,7 +15,7 @@ for i in range(1, 101):
     progress_bar.progress(i)
     last_rows = new_rows
     time.sleep(0.5)
-
+    os.system('cat /var/dashboard/app.py')
 progress_bar.empty()
 
 # Streamlit widgets automatically run the script from top to bottom. Since
