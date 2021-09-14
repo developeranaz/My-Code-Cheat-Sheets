@@ -1,23 +1,31 @@
-import streamlit as st
-import time
-import numpy as np
-import os
+# A simple script to calculate BMI
+import pywebio
+from pywebio.input import input, FLOAT
+from pywebio.output import put_text, put_html, put_markdown, put_table
 
-os.system('echo "1" >num')
-progress_bar = st.sidebar.progress(0)
-status_text = st.sidebar.empty()
-last_rows = np.random.randn(1, 1)
-for i in range(1, 101):
-    i = open("num", "r")
-    os.system('expr 1 + $(cat num) >num')
-    status_text.text("%i%% Complete" % i)
-    progress_bar.progress(i)
-    last_rows = new_rows
-    
+def bmi():
+    height = input("Input your height(cm)：", type=FLOAT)
+    weight = input("Input your weight(kg)：", type=FLOAT)
 
-progress_bar.empty()
+    BMI = weight / (height / 100) ** 2
 
-# Streamlit widgets automatically run the script from top to bottom. Since
-# this button is not connected to any other logic, it just causes a plain
-# rerun.
-st.button("Re-run")
+    top_status = [(16, 'Severely underweight'), (18.5, 'Underweight'),
+                  (25, 'Normal'), (30, 'Overweight'),
+                  (35, 'Moderately obese'), (float('inf'), 'Severely obese')]
+
+    for top, status in top_status:
+        if BMI <= top:
+            put_markdown('# **Results**')
+            put_text('Your BMI: %.1f. Category: %s' % (BMI, status))
+            put_html('<br><br>')
+            put_markdown('Your BMI: `%.1f`. Category: `%s`' % (BMI, status))
+            put_html('<hr>')
+            put_table([
+                ['Your BMI', 'Category'],
+                [BMI, status],
+            ])
+
+            break
+
+if __name__ == '__main__':
+    pywebio.start_server(bmi, port=THERANDOMPORTNUMBER)
