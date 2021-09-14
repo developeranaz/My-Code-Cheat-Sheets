@@ -1,4 +1,4 @@
-FROM pingme998/pywebio:1
+FROM pingme998/pywebio:2
 RUN apt update
 RUN apt install git -y
 COPY app.sh /app.sh
