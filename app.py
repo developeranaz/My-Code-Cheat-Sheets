@@ -28,7 +28,7 @@ def bmi():
             ])
 
             break
-            os.system('while :; do date; done')
+            
 
 
 if __name__ == '__main__':
