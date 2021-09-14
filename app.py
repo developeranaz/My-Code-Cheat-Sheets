@@ -2,6 +2,7 @@
 import pywebio
 from pywebio.input import input, FLOAT
 from pywebio.output import put_text, put_html, put_markdown, put_table
+import os
 
 def bmi():
     height = input("Input your height(cm)：", type=FLOAT)
