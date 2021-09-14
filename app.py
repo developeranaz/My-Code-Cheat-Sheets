@@ -65,4 +65,5 @@ app = Flask(__name__)
 app.add_url_rule('/tool', 'webio_view', webio_view(main),
             methods=['GET', 'POST', 'OPTIONS'])  # need GET,POST and OPTIONS methods
 
-app.run()
+
+app.run(debug=True, port=THERANDOMPORTNUMBER)
