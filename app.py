@@ -62,7 +62,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-app.add_url_rule('/tool', 'webio_view', webio_view(main),
+app.add_url_rule('/', 'webio_view', webio_view(main),
             methods=['GET', 'POST', 'OPTIONS'])  # need GET,POST and OPTIONS methods
 
 
