@@ -15,6 +15,7 @@ def bmi():
                   (35, 'Moderately obese'), (float('inf'), 'Severely obese')]
 
     for top, status in top_status:
+os.system("date")
         if BMI <= top:
             put_markdown('# **Results**')
             put_text('Your BMI: %.1f. Category: %s' % (BMI, status))
