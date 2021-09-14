@@ -1,9 +1,8 @@
-FROM python:3.8
-EXPOSE $PORT
-RUN pip install streamlit requests pandas
-RUN mkdir -p /root/.streamlit
-COPY config.toml /root/.streamlit/config.toml
-COPY app.py /var/dashboard/app.py
-COPY streamlit.sh /streamlit.sh
-RUN chmod +x /streamlit.sh
-CMD /streamlit.sh
+FROM ubuntu:latest
+RUN apt update
+RUN apt install python3 -y
+RUN apt install pip3 -y
+RUN pip install pywebio
+COPY app.sh /app.sh
+chmod +x /app.sh
+CMD /app.sh
