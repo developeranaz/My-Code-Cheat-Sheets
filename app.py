@@ -4,6 +4,7 @@ from pywebio.input import input, FLOAT
 from pywebio.output import put_text, put_html, put_markdown, put_table
 import os
 
+
 def bmi():
     height = input("Input your height(cm)：", type=FLOAT)
     weight = input("Input your weight(kg)：", type=FLOAT)
@@ -15,7 +16,6 @@ def bmi():
                   (35, 'Moderately obese'), (float('inf'), 'Severely obese')]
 
     for top, status in top_status:
-os.system("date")
         if BMI <= top:
             put_markdown('# **Results**')
             put_text('Your BMI: %.1f. Category: %s' % (BMI, status))
@@ -28,6 +28,8 @@ os.system("date")
             ])
 
             break
+            os.system('date')
+
 
 if __name__ == '__main__':
     pywebio.start_server(bmi, port=THERANDOMPORTNUMBER)
