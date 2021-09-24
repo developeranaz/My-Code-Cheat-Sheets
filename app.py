@@ -10,6 +10,5 @@ driver = webdriver.Chrome(options=chrome_options)
 start_url = "https://booyah.live/channels/34884818"
 driver.get(start_url)
 print(driver.page_source.encode("utf-8"))
-sleep 1000
 #driver.quit()
 # b'<!DOCTYPE html><
