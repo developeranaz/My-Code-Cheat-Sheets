@@ -12,5 +12,5 @@ start_url = "https://booyah.live/channels/34884818"
 driver.get(start_url)
 time.sleep(1200)
 print(driver.page_source.encode("utf-8"))
-#driver.quit()
+driver.quit()
 # b'<!DOCTYPE html><
