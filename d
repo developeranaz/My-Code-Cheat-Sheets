@@ -10,6 +10,6 @@ chrome_options.add_argument("--no-sandbox") # linux only
 driver = webdriver.Chrome(options=chrome_options)
 start_url = "https://booyah.live/channels/34884818"
 driver.get(start_url)
-time.sleep(10)
+time.sleep(10000)
 print(driver.page_source.encode("utf-8"))
 driver.quit()
