@@ -1,5 +1,7 @@
+# xpath from a chromium
 //*[@id="layout-content"]/div/div/div[1]/div[1]/div[2]/div/div[3]/div/button
 
+# xpaths and cssbtn from selenium rec 
 xpath=//div[@id='layout-content']/div/div/div/div/div[2]/div/div[3]/div/button/span
 css=.btn-play .button-content
 xpath=//button/span
