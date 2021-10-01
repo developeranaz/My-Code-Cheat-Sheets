@@ -6,3 +6,4 @@ xpath=//div[@id='layout-content']/div/div/div/div/div[2]/div/div[3]/div/button/s
 css=.btn-play .button-content
 xpath=//button/span
 https://booyah.live/livegamer?source=27
+//*[@id="layout-content"]/div/div/div[1]/div[1]/div[2]/div/div[3]/div/button
