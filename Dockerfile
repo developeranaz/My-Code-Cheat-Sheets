@@ -1,6 +1,6 @@
 FROM ubuntu
 RUN apt update -y
-RUN mkdir /usr/local
+#RUN mkdir /usr/local
 RUN mkdir /usr/local/bin
 RUN apt install python3 -y
 RUN apt install firefox -y
