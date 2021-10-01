@@ -8,7 +8,8 @@ RUN apt install aria2 -y
 RUN apt install rclone -y
 RUN wget 'https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz'
 RUN tar -xf geckodriver-v0.30.0-linux64.tar.gz
-RUN 
+
+RUN apt install firefox -y
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-CMD /system/sup*.sh
+CMD /en*.sh
