@@ -1,13 +1,11 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-
-browser = webdriver.Firefox()
-
-browser.get('http://www.yahoo.com')
-assert 'Yahoo' in browser.title
-
-elem = browser.find_element(By.NAME, 'p')  # Find the search box
-elem.send_keys('seleniumhq' + Keys.RETURN)
-
-browser.quit()
+from selenium.webdriver.firefox.options import Options
+import time
+options = Options()
+options.headless = True
+driver = webdriver.Firefox(options=options, executable_path=r'/usr/bin/geckodriver')
+driver.get("https://google.com")
+time.sleep(10)
+print(driver.page_source.encode("utf-8"))
+print ("Headless Firefox Initialized")
+driver.quit()
