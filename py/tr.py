@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 options = Options()
-#options.headless = True
+options.headless = True
 driver = webdriver.Firefox(options=options, executable_path=r'/usr/bin/geckodriver')
 driver.get("https://app.treasure.cloud/auth/signup?code=YzNkNGVmZDUtMjZiOS0xMWVjLWFmNzgtMWY5NWYyY2E3NDhhOmYwYTE0NjdhLTMyYzEtMTFlYi1iMWI4LTViYTQzMmY1ZjBkMA%3D%3D")
 time.sleep(15)
