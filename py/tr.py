@@ -12,7 +12,7 @@ driver.find_element_by_id("mat-input-2").send_keys("Xhzoamxtqye1@")
 time.sleep(1)
 driver.find_element_by_id("mat-input-3").send_keys("Xhzoamxtqye1@")
 time.sleep(1)
-driver.find_element_by_xpath("//body[@id='tm-body']/main/div/div/div[2]/div[2]/div/div/div/div[4]/ul/li[3]/div/a/span[2]").click()
+#driver.find_element_by_xpath("//body[@id='tm-body']/main/div/div/div[2]/div[2]/div/div/div/div[4]/ul/li[3]/div/a/span[2]").click()
 driver.find_element_by_id("continue-button").click()
 
         # ERROR: Caught exception [ERROR:
