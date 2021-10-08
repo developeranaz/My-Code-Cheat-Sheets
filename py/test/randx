@@ -1,6 +1,2 @@
 #!/bin/bash
-chars=a0bcdefghijklmnopqrstuvwxyz123456789abcdeef123456789012345
-for i in {1..13} ; do
-    echo -n "${chars:RANDOM%${#chars}:1}"
-done
-echo
+curl "https://mailsac.com/inbox/therandommail" 
