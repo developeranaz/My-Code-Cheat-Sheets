@@ -10,7 +10,8 @@ pkill geckodriver
 pkill firefox
 echo "sleep 60"
 sleep 60
-curl "https://mailsac.com/inbox/$therandommail" >mailhtml
+cat mailsac |sed "s|therandommail|$therandommail|g" >mailsac1
+bash mailsac1 >mailhtml
 therandomurl=$(cat mailhtml |sed 's/"/\n/g' |grep hubspot |head -1)
 echo $therandomurl >url
 cat org2.py |sed "s|therandomurl|$therandomurl|g" >exe2.py
