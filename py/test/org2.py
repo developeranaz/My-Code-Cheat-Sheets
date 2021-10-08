@@ -14,5 +14,13 @@ driver.find_element_by_css_selector('#mat-input-1').send_keys("THEMAILSAC")
 driver.find_element_by_css_selector('#mat-input-2').send_keys("Xhzoamxtqyei1@gmail.com")
 #driver.find_element_by_css_selector('#mat-input-3').send_keys("Xhzoamxtqyei1@gmail.com")
 driver.find_element_by_css_selector('#continue-button').click()
+
+
+
+
 #accept terms
+
+driver.find_element_by_css_selector('#mat-checkbox-1 > label:nth-child(1) > div:nth-child(1)').click()
+driver.find_element_by_css_selector('#mat-checkbox-2 > label:nth-child(1) > div:nth-child(1)').click()
+
 driver.quit()
