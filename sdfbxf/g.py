@@ -1,0 +1,27 @@
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+import time
+options = Options()
+#options.headless = True
+driver = webdriver.Firefox(options=options, executable_path=r'E:\Downloads\geckodriver.exe')
+#driver = webdriver.Firefox(options=options, executable_path=r'/usr/bin/geckodriver')
+driver.get("https://app.treasure.cloud/auth/signin")
+##time.sleep(10)
+driver.find_element_by_css_selector('button.mat-focus-indicator:nth-child(3)').click()
+time.sleep(2)
+#mat-input-0
+driver.find_element_by_css_selector('#mat-input-1').send_keys("Xhzoamxtqyei1@gmail.com")
+driver.find_element_by_css_selector('#mat-input-0').send_keys("kolpj875@mailto.plus")
+time.sleep(1)
+driver.find_element_by_css_selector('#signin-button').click()
+time.sleep(5)
+driver.find_element_by_css_selector('#mat-checkbox-1 > label:nth-child(1) > div:nth-child(1)').click()
+time.sleep(1)
+driver.find_element_by_css_selector('#mat-checkbox-2 > label:nth-child(1) > div:nth-child(1)').click()
+time.sleep(1)
+driver.find_element_by_css_selector('.primary-action').click()
+time.sleep(10)
+driver.find_element_by_css_selector('.primary-action').click()
+
+
+#mat-checkbox-1 > label:nth-child(1) > div:nth-child(1)
