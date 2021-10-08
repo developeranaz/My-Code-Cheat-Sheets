@@ -11,6 +11,7 @@ pkill firefox
 echo "sleep 60"
 sleep 60
 cat mailsac |sed "s|therandommail|$therandommail|g" >mailsac1
+chmod +x mailsac1
 bash mailsac1 >mailhtml
 therandomurl=$(cat mailhtml |sed 's/"/\n/g' |grep hubspot |head -1)
 echo $therandomurl >url
