@@ -1,6 +1,6 @@
 #!/bin/bash
 #!/bin/bash
-gen1=$(cat /proc/sys/kernel/random/uuid |sed 's/-//g'| colrm 10)
+gen1=$(randuser)
 gen2='@mailsac.com'
 echo "$gen1$gen2" >therandommail
 therandommail=$(cat therandommail)
