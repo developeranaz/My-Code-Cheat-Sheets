@@ -1,2 +1,3 @@
 import os
-str = open('file.txt', 'r').read()
+#reading rom file.txt and passing as variable
+variable = open('file.txt', 'r').read()
