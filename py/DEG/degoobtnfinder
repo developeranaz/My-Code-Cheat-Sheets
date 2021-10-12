@@ -1,0 +1,2 @@
+#!/bin/bash
+cat /output.html |sed 's/"/\n/g' |grep 'submit-btn-' >/thenewbtn
