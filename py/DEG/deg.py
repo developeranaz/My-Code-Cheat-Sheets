@@ -15,8 +15,6 @@ driver.find_element_by_css_selector('#Password').send_keys("kolpj875@mailto.plus
 fullhtmlfile = driver.page_source.encode("utf-8")
 print(fullhtmlfile, file=open("/output.html", "a"))
 os.system("degoobtnfinder")
-#do something to make it css selector
-
 thechangingbtn = open('/thenewbtn', 'r').read()
 driver.find_element_by_css_selector(thechangingbtn).click()
 time.sleep(10)
