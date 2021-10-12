@@ -19,4 +19,5 @@ os.system("degoobtnfinder -h output.html >thenewbtn")
 
 thechangingbtn = open('thenewbtn', 'r').read()
 driver.find_element_by_css_selector(thechangingbtn).click()
+time.sleep(10)
 driver.quit()
