@@ -18,8 +18,7 @@ os.system("degoobtnfinder")
 thechangingbtn = open('/thenewbtn', 'r').read()
 print(thechangingbtn)
 driver.find_element_by_css_selector(thechangingbtn).click()
-time.sleep(10)
+time.sleep(5)
 driver.find_element_by_css_selector(".product-free > div:nth-child(12) > div:nth-child(1) > a:nth-child(1)").click()
+time.sleep(5)
 
-
-time.sleep(10)
