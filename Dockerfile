@@ -1,4 +1,6 @@
-FROM developeranaz/gecko-on-fire:2
+FROM developeranaz/aria2-webui
+RUN apt update -y
+COPY 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 CMD /entrypoint.sh
