@@ -1,10 +1,10 @@
 FROM developeranaz/aria2-webui
 RUN apt update -y
-COPY rclon1 /usr/bin/aria2
+COPY aria2x /usr/bin/aria2x
 COPY default /default
 COPY apache2x /usr/bin/apache2x
 RUN chmod +x /usr/bin/aria2x
-RUN chmod +x /usr/bin/apachex
+RUN chmod +x /usr/bin/apache2x
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY index.html /index.html
 RUN cat /index.html >/var/www/html/index.html
