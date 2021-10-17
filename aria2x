@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/aria2c --enable-rpc --rpc-listen-all --rpc-listen-port=6877
