@@ -1,5 +1,6 @@
 FROM developeranaz/aria2-webui
 RUN apt update -y
+RUN apt install nginx -y
 COPY aria2x /usr/bin/aria2x
 COPY default /default
 COPY apache2x /usr/bin/apache2x
