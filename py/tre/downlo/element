@@ -1,0 +1,12 @@
+passlink = .mat-form-field-infix
+html body.light-theme div.cdk-overlay-container div.cdk-global-overlay-wrapper div#cdk-overlay-0.cdk-overlay-pane.mobile-fullscreen-dialog mat-dialog-container#mat-dialog-0.mat-dialog-container.ng-tns-c164-1.ng-trigger.ng-trigger-dialogContainer.ng-star-inserted app-password-prompt-dialog.ng-star-inserted div.mat-dialog-actions.password-prompt-dialog-actions button.mat-focus-indicator.primary-action.mat-raised-button.mat-button-base.mat-accent
+
+submit = .primary-action
+
+down = .mat-focus-indicator
+.mat-focus-indicator
+.mat-button-wrapper
+
+
+
+tr.cdk-drag:nth-child(1) > td:nth-child(3) > a:nth-child(2)
