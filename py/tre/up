@@ -1,0 +1,8 @@
+curl 'https://app.treasure.cloud/api/v1/storages/62c4e576-2f76-11ec-9494-0faea6ae28e4/files/upload' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Referer: https://app.treasure.cloud/drive/62c4e576-2f76-11ec-9494-0faea6ae28e4' \
+  -H 'Authorization: VE9LRU46NWMzNTQwZmUtMzBmNC0xMWVjLThhMmUtOGZhNGNjYmE1ZDRjOmFjZmQ2ODA1LTJmNzUtMTFlYy1iNmZkLTMxNWUzZWRjMTI1YTpkaGFtdUBtYWlsc2FjLmNvbQ==' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36' \
+  -H 'Content-Type: application/json' \
+  --data-raw '{"uploads":[{"parentUuid":"62c4e577-2f76-11ec-9494-0faea6ae28e4","name":"geckodriver.exe.treasure","efk":"eyJjaXBoZXJ0ZXh0IjoiZXYxR0IxOXllcUMvZGt5cU10NlVTQW9HUTNZdTBGeEdMejdPMFBDZjNnRkVRcnkyT2p1RTdRQ3VVUCtGak8vciIsIml2IjoiNnJGcFBkUndweEJnOHBnSyJ9","mimeType":"application/octet-stream","size":3301227,"unencryptedSize":3300792,"secureUpload":true,"path":"/"}]}' \
+  --compressed
