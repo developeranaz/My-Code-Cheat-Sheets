@@ -1,0 +1,44 @@
+#!/bin/bash
+#MXURL='ccc'
+echo "MXLoader by DevAnaZ"
+echo "GITHUB : https://github.com/developeranaz"
+echo ""
+echo "Please type the MX URL below :"
+read MXURL
+echo "You entered: $MXURL"
+curl -s "$MXURL" >.mx
+#QUALITY=144
+MXNAME=$(cat .mx |sed 's/</\n/g'|grep 'h1-heading">' |sed 's|div class="app-header h1-heading">||g' |sed 's|h1-heading">|\n|g' |tail -1 |sed 's/ /./g')
+cm3u8=$(cat .mx |sed 's/"/\n/g' |grep m3u8 |head -1)
+echo $cm3u8 |sed 's/hls\//hls\/\n/g' |grep http >.am3u8
+curl -s $cm3u8 |sed 's/"/\n/g' |grep m3u8 >.fm3u8
+cat .fm3u8 |sed  "s|^|$(cat .am3u8)|g" >.xm3u8
+cat .fm3u8 |sed '/audio/d'| sed 's/_/quality\n/g'|sed '/high\|m3u8\|frame\|audio\|h264/d' |sort -u |sed 's/quality//g'
+echo " Please type the above quality $QUALITYPS "
+read QUALITY
+echo "You entered: $QUALITY"
+
+cat .xm3u8 |head -1 >.ad
+cat .xm3u8 |grep $QUALITY >.exex
+cat .exex |sed  "s|^|ffmpeg -i '|g" >.exex1
+cat .exex1 |grep 'iframe' >.xm3u8
+cat .exex1 | sed "s|$(cat .xm3u8)||g" >.vm3u8
+cat .ad |sed  "s|^|ffmpeg -i '|g" > .am3u8
+cat .am3u8 |grep m3u8 |sed "s|$|' -bsf:a aac_adtstoasc -acodec copy 1.aac|g" >exe.sh
+cat .vm3u8 |grep m3u8 |sed "s|$|' -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 2.mp4|g" >>exe.sh
+bash exe.sh
+mkdir MXLoader
+ffmpeg -i 2.mp4 -i 1.aac -c copy ./MXLoader/$MXNAME.mp4
+rm .vm3u8
+rm .fm3u8
+rm .xm3u8
+rm .exex1
+rm .exex
+rm exe.sh
+rm .mx
+rm 1.aac
+rm 2.mp4
+rm .am3u8
+rm .ad
+PWD=$(pwd)
+echo "Your Downloaded file path is $PWD/MXLoader/$MXNAME"
