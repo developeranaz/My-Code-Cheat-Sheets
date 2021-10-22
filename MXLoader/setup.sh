@@ -1,5 +1,5 @@
 #!/bin/bash
-curl '' >$PREFIX/bin/mxloader; chmod +x $PREFIX/bin/mxloader
+curl '' >$PREFIX/bin/mxloader; chmod +x $PREFIX/bin/mxloader >.log
 curl '' >/usr/bin/mxloader; chmod +x /usr/bin/mxloader >.log
 apt install ffmpeg -y
 echo ""
