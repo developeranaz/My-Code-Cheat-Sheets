@@ -41,4 +41,4 @@ rm 2.mp4
 rm .am3u8
 rm .ad
 PWD=$(pwd)
-echo "Your Downloaded file path is $PWD/MXLoader/$MXNAME"
+echo "Your Downloaded file path is $PWD/MXLoader/$MXNAME.mp4"
