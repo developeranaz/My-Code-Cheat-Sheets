@@ -13,15 +13,14 @@
 command="ifconfig eth0 |grep 'RX packets' |sed 's/(\|)/\n/g' |grep 'MiB\|GiB'"
 #
 
-log="prog.log"
-match="1"
+bandwidthlimit="bandwidthlimit.log"
+theEnd="Bandwidth Limit Exceeded"
 
-$command > "$log" 2>&1 &
-pid=$!
+rcd > "$log" 2>&1 &
 
 while sleep 1
 do
-    if fgrep --quiet "$match" "$log"
+    if fgrep --quiet "$theEnd" "$log"
     then
         kill $pid
         exit 0
