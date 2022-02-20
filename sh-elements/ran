@@ -7,11 +7,11 @@ echo "$ehashone.$ehashtwo@incorporatedmail.com" >/$REPONAME/gen/email
 
 #get mail hash
 
-curl "https://temporarymail.com/ajax/?action=requestEmailAccess&value=$MAILNAME"   -H 'Accept: */*'   -H 'Referer: https://temporarymail.com/'   -H 'X-Requested-With: XMLHttpRequest'   -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'   --compressed |sed 's@secretKey":"@\nsecurekey180@g' |grep "securekey180" |sed 's@securekey180\|"}@@g'
-
+curl "https://temporarymail.com/ajax/?action=requestEmailAccess&value=$MAILNAME"   -H 'Accept: */*'   -H 'Referer: https://temporarymail.com/'   -H 'X-Requested-With: XMLHttpRequest'   -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'   --compressed |sed 's@secretKey":"@\nsecurekey180@g' |grep "securekey180" |sed 's@securekey180\|"}@@g' >/$REPONAME/gen/securekey
+SECUREKEY=$(cat /$REPONAME/gen/securekey)
 
 #get mail id
-curl "https://temporarymail.com/ajax/?action=checkInbox&value=14z5FlfOGwx7PdaYGzpx5yoyjhdcEXLG" \
+curl "https://temporarymail.com/ajax/?action=checkInbox&value=$SECUREKEY" \
   -H 'Accept: */*' \
   -H 'Referer: https://temporarymail.com/' \
   -H 'X-Requested-With: XMLHttpRequest' \
