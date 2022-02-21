@@ -33,7 +33,7 @@ curl "https://temporarymail.com/view/?i=$GETMAILID&width=822"   -H 'authority: t
 cat file.html|sed 's|"|\n|g;s|hxxp|http|g' |grep 'hubspotlinks'|head -1 >/$REPONAME/gen/randomurl
 
 #SCALING RAW PY 1
-
+cat /$REPONAME/raw/first |sed "s||$MAILNAME|g"
 
 
 #getmail (gettingmails)
