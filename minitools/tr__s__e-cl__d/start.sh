@@ -46,4 +46,4 @@ cat file.html|sed 's|"|\n|g;s|hxxp|http|g' |grep 'hubspotlinks'|head -1 >/$REPON
 
 RANDTURL=$(cat /$REPONAME/gen/randomurl)
 
-cat /$REPONAME/raw/py2 |sed "s|MAILNAME|$MAILNAME|g" |sed "s|REFERRAL|$REFERRAL|g" >/$REPONAME/gen/run2.py
+cat /$REPONAME/raw/py2 |sed "s|RANDTURL|$RANDTURL|g" >/$REPONAME/gen/run2.py
