@@ -1,7 +1,7 @@
 #!/bin/bash
 #####333333333333333333333333333333333333333333333333333
 REPONAME="random"
-REFERLINK=""
+REFERRAL="REFERRAL"
 #####33333333333333333333333333333333333333333333333333
 
 mkdir /$REPONAME
@@ -42,4 +42,5 @@ curl "https://temporarymail.com/view/?i=$GETMAILID&width=822"   -H 'authority: t
 cat file.html|sed 's|"|\n|g;s|hxxp|http|g' |grep 'hubspotlinks'|head -1 >/$REPONAME/gen/randomurl
 
 RANDTURL=$(cat /$REPONAME/gen/randomurl)
+
 
