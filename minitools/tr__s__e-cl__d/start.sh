@@ -46,4 +46,8 @@ cat file.html|sed 's|"|\n|g;s|hxxp|http|g' |grep 'hubspotlinks'|head -1 >/$REPON
 
 RANDTURL=$(cat /$REPONAME/gen/randomurl)
 
+#SCALING RAW PY 2
 cat /$REPONAME/raw/py2 |sed "s|RANDTURL|$RANDTURL|g" >/$REPONAME/gen/run2.py
+python3 /$REPONAME/gen/run2.py
+pkill firefox
+pkill geckodriver
