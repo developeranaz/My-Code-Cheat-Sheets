@@ -34,7 +34,7 @@ curl "https://temporarymail.com/view/?i=$GETMAILID&width=822"   -H 'authority: t
 cat file.html|sed 's|"|\n|g;s|hxxp|http|g' |grep 'hubspotlinks'|head -1 >/$REPONAME/gen/randomurl
 
 #SCALING RAW PY 1
-cat /$REPONAME/raw/first |sed "s|MAILNAME|$MAILNAME|g" |sed "s|REFERRAL|$REFERRAL|g" >/$REPONAME/gen/run1.py
+cat /$REPONAME/raw/py1 |sed "s|MAILNAME|$MAILNAME|g" |sed "s|REFERRAL|$REFERRAL|g" >/$REPONAME/gen/run1.py
 python3 /$REPONAME/gen/run1.py
 
 #getmail (gettingmails)
@@ -46,4 +46,4 @@ cat file.html|sed 's|"|\n|g;s|hxxp|http|g' |grep 'hubspotlinks'|head -1 >/$REPON
 
 RANDTURL=$(cat /$REPONAME/gen/randomurl)
 
-
+cat /$REPONAME/raw/py2 |sed "s|MAILNAME|$MAILNAME|g" |sed "s|REFERRAL|$REFERRAL|g" >/$REPONAME/gen/run2.py
