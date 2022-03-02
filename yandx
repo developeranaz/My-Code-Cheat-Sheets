@@ -1,0 +1,50 @@
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+import time
+import os
+import pickle
+
+options = Options()
+#options.headless = True
+driver = webdriver.Firefox(options=options, executable_path=r'E:\Downloads\geckodriver.exe')
+#driver = webdriver.Firefox(options=options, executable_path=r'/usr/bin/geckodriver')
+driver.get("https://passport.yandex.com/registration/mail?from=mail&require_hint=1&origin=hostroot_homer_reg_com&retpath=https%3A%2F%2Fmail.yandex.com%2F&backpath=https%3A%2F%2Fmail.yandex.com%3Fnoretpath%3D1")
+time.sleep(1)
+driver.find_element_by_css_selector('#firstname').send_keys("sunda")
+
+driver.find_element_by_css_selector('#lastname').send_keys("raan")
+driver.find_element_by_css_selector('#login').send_keys("dha9m.ex.00")
+driver.find_element_by_css_selector('#password').send_keys("qipqwerr")
+driver.find_element_by_css_selector('#password_confirm').send_keys("qipqwerr")
+driver.find_element_by_css_selector('span.Link').click()
+driver.find_element_by_css_selector('#hint_answer').send_keys("sundaran")
+
+captcha = open('captcha.txt', 'r').read()
+driver.find_element_by_css_selector('#captcha').send_keys(captcha)
+time.sleep(3)
+time.sleep(30)
+driver.find_element_by_css_selector('button.Button2_view_action:nth-child(1)').click()
+driver.find_element_by_css_selector('button.Button2:nth-child(4)').click()
+time.sleep(60)
+
+driver.find_element_by_css_selector('a.Button2').click()
+time.sleep(30)
+driver.quit()
+
+
+
+
+
+#firstname
+#lastname
+#login
+#password
+#password_confirm
+#root > div > div.grid > div > main > div > div > div > form > div.human-confirmation-wrapper.can-switch > div > div:nth-child(2) > div > div.toggle-link.link_has-no-phone > span or span.Link
+#hint_answer
+#          .captcha__image <img src="https://ext.captcha.yandex.net/image?key=00A52BFMGraNOlslkJEg2pd01pfOfHaC" class="captcha__image" alt="captcha image" aria-label="captcha image">
+#captcha
+#div.field__error:nth-child(1) > label:nth-child(2)
+
+
+#root > div > div.grid > div > main > div > div > div > form > div.form__submit > span > button or button.Button2_view_action:nth-child(1)
