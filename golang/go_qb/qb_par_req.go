@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os/exec"
 	"sync"
-	"flags"
+	"flag"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -34,6 +34,10 @@ func ad() {
 }
 
 func as() {
+qbusername := flag.String("username", "admin", "Zdefault username")
+
+flag.Parse()
+fmt.Println("username:", *qbusername)
 	for {
 		c := http.Client{Timeout: time.Duration(1) * time.Second}
 		resp, err := c.Get("http://127.0.0.1:8080")
