@@ -4,6 +4,7 @@ package main
 // Distributed under terms of the MIT license.
 
 import (
+        "flags"
 	"os/exec"
 	"sync"
 	"io/ioutil"
