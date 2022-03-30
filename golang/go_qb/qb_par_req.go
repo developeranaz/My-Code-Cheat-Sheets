@@ -92,14 +92,9 @@ fmt.Println("password:", *qbpassword)
 			}
 			fmt.Println(string(bodyx))
 
-			//second reqstarting here ffffffffffffffffffffffffffffffffffffffffffffffffff
+			//second req starting here ffffffffffffffffffffffffffffffffffffffffffffffffff
 
-			/*  cookies := &http.Cookie{
-			        Name: "SID",
-			        Value: "PW16gD0Ja0OqixXeqpQle1WC/OK19tj+",
-			        MaxAge: 300,
-			    }
-			*/
+
 			url := "http://localhost:8080/api/v2/app/setPreferences"
 			method := "POST"
 
