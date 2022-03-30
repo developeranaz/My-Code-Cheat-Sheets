@@ -35,9 +35,16 @@ func ad() {
 
 func as() {
 qbusername := flag.String("username", "admin", "Zdefault username")
+qbpassword := flag.String("password", "adminadmin", "Zdefault password")
+
+
 
 flag.Parse()
+// using/printing flags to avoid error
+
 fmt.Println("username:", *qbusername)
+fmt.Println("password:", *qbpassword)
+
 	for {
 		c := http.Client{Timeout: time.Duration(1) * time.Second}
 		resp, err := c.Get("http://127.0.0.1:8080")
