@@ -31,5 +31,7 @@ wu=$(echo $first |sed "s@$lastname@ + *qb_$firstname + @g")
 echo $wu >> new
 tail -n +2 raw >.raw
 cat .raw >raw
+#  default  qb_torrent_changed_tmm_enabled := flag.String("qb_torrent_changed_tmm_enabled", "true", "Error default value used")
 #echo "$lastname"
+cat def |sed "s||$firstname|g"
 done
