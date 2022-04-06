@@ -36,7 +36,7 @@ func ad() {
 func as() {
 qbusername := flag.String("username", "admin", "Zdefault username")
 qbpassword := flag.String("password", "adminadmin", "Zdefault password")
-qb_json=%7B%22torrent_content_layout := flag.String("qb_json=%7B%22torrent_content_layout", "Original", "Error default value used")
+qb_torrent_content_layout := flag.String("qb_torrent_content_layout", "Original", "Error default value used")
 qb_start_paused_enabled := flag.String("qb_start_paused_enabled", "false", "Error default value used")
 qb_auto_delete_mode := flag.String("qb_auto_delete_mode", "false", "Error default value used")
 qb_preallocate_all := flag.String("qb_preallocate_all", "false", "Error default value used")
