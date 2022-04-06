@@ -29,7 +29,7 @@ func init() {
 }
 
 func ad() {
-	cmd := exec.Command("qbittorrent-nox", "--profile=./")
+	cmd := exec.Command("./x86_64-qbittorrent-nox", "--profile=./")
 	cmd.Run()
 }
 
