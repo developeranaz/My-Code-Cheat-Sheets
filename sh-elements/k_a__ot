@@ -1,0 +1,126 @@
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:09.511Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"1e2c2831330743138e53ccfec2238967","init":false,"started":"2022-04-11T06:25:42.207Z","timestamp":"2022-04-11T06:28:09.511Z","status":"exited","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:09.518Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"e8950b593af3401ebfa0a3c53edf5f02","init":true,"started":"2022-04-11T06:28:09.511Z","timestamp":"2022-04-11T06:28:09.511Z","status":"ok","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:19.313Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"e8950b593af3401ebfa0a3c53edf5f02","init":false,"started":"2022-04-11T06:28:09.511Z","timestamp":"2022-04-11T06:28:19.312Z","status":"exited","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:19.319Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"5bf4ce3e77ac485d8f9afe8bdd450283","init":true,"started":"2022-04-11T06:28:19.312Z","timestamp":"2022-04-11T06:28:19.312Z","status":"ok","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://assets-cdn.kahoot.it/controller/v2/assets/Question_type--Question.9a480bf0.svg' \
+  -H 'authority: assets-cdn.kahoot.it' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7' \
+  -H 'cookie: amplitude_id_bbe76494b586b96ca8380f0a81505aa2kahoot.it=eyJkZXZpY2VJZCI6IjcwNzFjNjEwLTlkMGItNDgyZi05YTJlLTIyZTM3ZmZmZjM1NFIiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTY0OTU5NTQ2ODI4NSwibGFzdEV2ZW50VGltZSI6MTY0OTU5NTUwMjY5OCwiZXZlbnRJZCI6MjcsImlkZW50aWZ5SWQiOjgsInNlcXVlbmNlTnVtYmVyIjozNX0=; amplitude_id_1ecbdca138dc545d0042617f31fc1556kahoot.it=eyJkZXZpY2VJZCI6Ijg5MmQ0NWNmLTRhNzYtNDgzYi04YjM3LWYyNmRhZDk1NzUwZVIiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTY0OTY1NzM0OTU1NSwibGFzdEV2ZW50VGltZSI6MTY0OTY1ODM0MTgzNCwiZXZlbnRJZCI6MTIsImlkZW50aWZ5SWQiOjE2LCJzZXF1ZW5jZU51bWJlciI6Mjh9' \
+  -H 'referer: https://kahoot.it/' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:23.750Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"5bf4ce3e77ac485d8f9afe8bdd450283","init":false,"started":"2022-04-11T06:28:19.312Z","timestamp":"2022-04-11T06:28:23.749Z","status":"exited","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:23.757Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"614304895f9e482ca22700554ed60486","init":true,"started":"2022-04-11T06:28:23.749Z","timestamp":"2022-04-11T06:28:23.749Z","status":"ok","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:44.181Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"614304895f9e482ca22700554ed60486","init":false,"started":"2022-04-11T06:28:23.749Z","timestamp":"2022-04-11T06:28:44.181Z","status":"exited","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:28:44.190Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"df90c4d3bbec432eaefc557dfcc6248d","init":true,"started":"2022-04-11T06:28:44.180Z","timestamp":"2022-04-11T06:28:44.180Z","status":"ok","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:30:04.920Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"df90c4d3bbec432eaefc557dfcc6248d","init":false,"started":"2022-04-11T06:28:44.180Z","timestamp":"2022-04-11T06:30:04.919Z","status":"exited","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:30:04.925Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"4f9c96b7fc004eee901d91a14c0bd926","init":true,"started":"2022-04-11T06:30:04.919Z","timestamp":"2022-04-11T06:30:04.919Z","status":"ok","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:30:10.090Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"4f9c96b7fc004eee901d91a14c0bd926","init":false,"started":"2022-04-11T06:30:04.919Z","timestamp":"2022-04-11T06:30:10.090Z","status":"exited","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:30:10.100Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"46cdb58c4fcd490494b9dfa553176aaf","init":true,"started":"2022-04-11T06:30:10.090Z","timestamp":"2022-04-11T06:30:10.090Z","status":"ok","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:30:31.451Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"46cdb58c4fcd490494b9dfa553176aaf","init":false,"started":"2022-04-11T06:30:10.090Z","timestamp":"2022-04-11T06:30:31.450Z","status":"exited","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed ;
+curl 'https://o160713.ingest.sentry.io/api/1396500/envelope/?sentry_key=5ab18dd2256e4809906e4c5aceab2c60&sentry_version=7' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="101"' \
+  -H 'Referer: https://kahoot.it/' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  --data-raw $'{"sent_at":"2022-04-11T06:30:31.460Z","sdk":{"name":"sentry.javascript.browser","version":"6.19.3"}}\n{"type":"session"}\n{"sid":"2be9726563ca40008fdff0bbdfba7a2f","init":true,"started":"2022-04-11T06:30:31.450Z","timestamp":"2022-04-11T06:30:31.450Z","status":"ok","errors":0,"attrs":{"release":"1.2194.0","environment":"production","user_agent":"Mozilla/5.0 (Linux; Android 9; BND-AL10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.13 Mobile Safari/537.36"}}' \
+  --compressed
