@@ -1,0 +1,18 @@
+        <form action="PayslipServlet" method="get">
+          Last name:    <input type="text" name="lname" id="lname"><br/>
+<p>Check out <a href=<span id="result"></span> target="_blank" rel="noopener noreferrer">freeCodeCamp</a>.</p>
+
+          <br>
+          <input type="button" value="Submit" onClick="pr()">
+        </form>
+
+        <script>
+          function pr() {
+            document.getElementById("result").innerHTML =  document.getElementById('lname').value;
+          }
+        </script>
+
+
+
+
+        
