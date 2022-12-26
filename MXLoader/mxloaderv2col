@@ -1,0 +1,56 @@
+#!/bin/bash
+
+cd /content/theuntampedtamil
+#VARS
+#MXURL="https://www.mxplayer.in/show/watch-the-untamed-tamil-dubbed/season-1/episode-2-online-60fe598a444eb9ef373b6849ba4d769e"
+
+while getopts ":u:p:c:" opt; do
+  case $opt in
+    u) MXURL="$OPTARG"
+    ;;
+    p) password="$OPTARG"
+    ;;
+    c) conf_in_url="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+#echo "$username $password $conf_in_url"
+
+
+
+#get MXNAME
+wget -qO- "$MXURL" |   perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si' |sed 's/ \|--/-/g' |sed 's/|//g;s@--@.@g;s@(\|)\|\[\|]\|:@@g' >.tmp.name
+MXNAME="$(cat .tmp.name)"
+echo $MXNAME
+
+#get MXID
+curl -L "$MXURL" |sed 's|"high":"video/|\nTHEVIDEOID=|g;s@"@\n@g;s|/|\n|g' |grep 'THEVIDEOID' |sort -u |head -1 |sed 's/THEVIDEOID=//g' >.tmp.mxid
+MXID="$(cat .tmp.mxid)"
+echo $MXID
+cd /content/theuntampedtamil
+#get M3U8 LINK
+curl -L "$MXURL" |sed 's|"contentUrl":"|\nTHEM3U8=|g;s@"@\n@g' |grep 'THEM3U8=' |head -1 |grep 'm3u8' |sed 's|THEM3U8=||g' >.tmp.m3u8
+M3U8="$(cat .tmp.m3u8)"
+
+#removing previos files
+rm -r .tmp.mp3
+rm -r .tmp.mp4
+
+#audio
+
+#ffmpeg -i "https://media-content.akamaized.net/video/$MXID/hls/h264_high_audio_128000_0_64.m3u8" -c copy -bsf:a aac_adtstoasc .tmp.mp3
+
+#video
+
+#ffmpeg -i "https://media-content.akamaized.net/video/$MXID/dash/h264_high_segments/h264_1080_high_5800k_62.m4s" -c copy -bsf:a aac_adtstoasc .tmp.mp4
+
+#merge audio and video
+
+#ffmpeg -i '.tmp.mp4' -i '.tmp.mp3' -c copy "$MXNAME.mp4"
+
+# r
+cd /content/theuntampedtamil
+
+ffmpeg -i "$M3U8" -c copy -bsf:a aac_adtstoasc "$MXNAME.mp4"
