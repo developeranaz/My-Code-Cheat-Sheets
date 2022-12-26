@@ -53,4 +53,4 @@ rm -r .tmp.mp4
 # r
 cd /content/theuntampedtamil
 
-ffmpeg -i "$M3U8" -c copy -bsf:a aac_adtstoasc "$MXNAME.mp4"
+/usr/bin/ffmpeg -i "$M3U8" -c copy -bsf:a aac_adtstoasc "$MXNAME.mp4"
