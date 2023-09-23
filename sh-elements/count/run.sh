@@ -1,4 +1,3 @@
-GNU nano 7.2                       a.sh
 #!/bin/bash
 
 # Set numvar1 as a constant
