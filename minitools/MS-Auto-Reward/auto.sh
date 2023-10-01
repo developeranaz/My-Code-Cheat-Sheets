@@ -24,7 +24,7 @@ sleep 5; pkill firefox
 firefox --headless  --profile ./fp$password "https://developeranaz.github.io/My-Code-Cheat-Sheets/indexp.html" &
 sleep 60; pkill firefox
 sleep 5; pkill firefox
-curl -s "https://api.telegram.org/bot$XBOTID/sendMessage?chat_id=$XCHATID&text=$password"
+curl -s "https://api.telegram.org/$XBOTID/sendMessage?chat_id=$XCHATID&text=$password"
 #firefox --headless  --profile ./fp$password "https://developeranaz.github.io/My-Code-Cheat-Sheets/indexp.html" > "$log" 2>&1 &
 #while sleep 10
 #do
