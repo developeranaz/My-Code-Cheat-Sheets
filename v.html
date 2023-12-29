@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera and Google Drive Upload</title>
+</head>
+<body>
+
+<!-- Display Camera Video Feed -->
+<video id="cameraFeed" width="640" height="480" autoplay></video>
+
+<!-- Button to Capture and Insecurely Upload Image -->
+<button onclick="captureAndUpload()">Capture and Upload</button>
+
+<script>
+  // Access the user's camera
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      const video = document.getElementById('cameraFeed');
+      video.srcObject = stream;
+    })
+    .catch(error => console.error('Error accessing camera:', error));
+
+  // Function to capture and insecurely upload image
+  function captureAndUpload() {
+    const video = document.getElementById('cameraFeed');
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Convert captured image to data URL
+    const imageDataURL = canvas.toDataURL('image/png');
+
+    // Insecurely upload imageDataURL to Google Drive (not recommended for production)
+    window.location.href = 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=' + uploadToDrive(imageDataURL);
+  }
+
+  // Insecure function to upload to Google Drive
+  function uploadToDrive(imageDataURL) {
+    const formData = new FormData();
+    const blob = dataURItoBlob(imageDataURL);
+    formData.append('file', blob, 'captured-image.png');
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=', false);
+    xhr.send(formData);
+
+    return xhr.responseText;
+  }
+
+  // Convert data URI to Blob
+  function dataURItoBlob(dataURI) {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ab], { type: mimeString });
+  }
+</script>
+
+</body>
+</html>
