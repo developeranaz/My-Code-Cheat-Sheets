@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Configure Extension</title>
+</head>
+
+<body>
+  <h1>Extension Configuration</h1>
+  <label for="scriptToggle">Enable Script:</label>
+  <input type="checkbox" id="scriptToggle">
+
+  <script>
+    document.getElementById('scriptToggle').addEventListener('change', function () {
+      // Save the state or perform actions based on the toggle state
+      var scriptEnabled = this.checked;
+      // You can use Chrome Storage API to save this state if needed
+      // chrome.storage.sync.set({ scriptEnabled: scriptEnabled });
+    });
+  </script>
+</body>
+
+</html>
