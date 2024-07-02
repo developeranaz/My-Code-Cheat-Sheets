@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open New Tabs Continuously</title>
+    <script>
+        function openTabs() {
+            const url = "https://blue-cake-c83a.sobaw87342.workers.dev/?url=https://youtube.com/shorts/Ft-1Fd0zofw?feature=share";
+            setInterval(() => {
+                window.open(url, '_blank');
+            }, 5000); // Opens a new tab every 5 seconds
+        }
+    </script>
+</head>
+<body onload="openTabs()">
+    <h1>Continuous Tab Opener</h1>
+    <p>This page will continuously open new tabs.</p>
+</body>
+</html>
