@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Filename Extractor with Custom Filter</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    textarea, input, pre {
+      width: 100%;
+      margin-top: 10px;
+      font-family: monospace;
+    }
+    textarea {
+      height: 150px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2>URL to Filename Extractor</h2>
+
+  <label>Paste URLs here:</label>
+  <textarea id="urlInput" placeholder="Paste URLs here..."></textarea>
+
+  <label>Text to Remove from Filenames (optional):</label>
+  <input type="text" id="customFilter" placeholder="e.g. www.1extra.day - " />
+
+  <button onclick="extractFilenames()">Extract Filenames</button>
+
+  <h3>Output:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    function extractFilenames() {
+      const input = document.getElementById('urlInput').value;
+      const filterText = document.getElementById('customFilter').value;
+      const urls = input.trim().split(/\s+/);
+
+      const filenames = urls.map(url => {
+        try {
+          const pathname = new URL(url).pathname;
+          let filename = decodeURIComponent(pathname.split('/').pop());
+          if (filterText) {
+            filename = filename.replace(filterText, '');
+          }
+          return filename;
+        } catch (e) {
+          return 'Invalid URL';
+        }
+      });
+
+      document.getElementById('output').textContent = filenames.join('\n');
+    }
+  </script>
+</body>
+</html>
