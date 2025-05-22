@@ -1,61 +1,161 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>URL Filename Extractor with Custom Filter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Filename Extractor</title>
   <style>
     body {
       font-family: sans-serif;
-      padding: 20px;
+      padding: 15px;
+      max-width: 800px;
+      margin: 0 auto;
     }
     textarea, input, pre {
       width: 100%;
       margin-top: 10px;
       font-family: monospace;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
     textarea {
       height: 150px;
+      resize: vertical;
     }
     button {
       margin-top: 10px;
-      padding: 8px 12px;
+      padding: 12px 20px;
       font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .copy-button {
+      background-color: #008CBA;
+      margin-left: 10px;
+      padding: 8px 15px;
+    }
+    .copy-button:hover {
+      background-color: #007399;
+    }
+    .output-section {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+    .copy-btn-container {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      button {
+        width: 100%;
+        margin-top: 8px;
+      }
+      .copy-button {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 <body>
   <h2>URL to Filename Extractor</h2>
 
-  <label>Paste URLs here:</label>
-  <textarea id="urlInput" placeholder="Paste URLs here..."></textarea>
+  <div class="input-group">
+    <label>Paste URLs here:</label>
+    <textarea id="urlInput" placeholder="Paste URLs here..."></textarea>
+    <div class="copy-btn-container">
+      <button onclick="copyToClipboard('urlInput')" class="copy-button">Copy</button>
+    </div>
+  </div>
 
-  <label>Text to Remove from Filenames (optional):</label>
-  <input type="text" id="customFilter" placeholder="e.g. www.1extra.day - " />
+  <div class="input-group">
+    <label>Text to Remove from Filenames (optional):</label>
+    <input type="text" id="customFilter" placeholder="e.g. www.1extra.day - " />
+    <div class="copy-btn-container">
+      <button onclick="copyToClipboard('customFilter')" class="copy-button">Copy</button>
+    </div>
+  </div>
 
   <button onclick="extractFilenames()">Extract Filenames</button>
 
-  <h3>Output:</h3>
-  <pre id="output"></pre>
+  <div class="output-section">
+    <h3>Parsed URLs:</h3>
+    <pre id="urlOutput"></pre>
+    <button onclick="copyToClipboard('urlOutput')" class="copy-button">Copy URLs</button>
+  </div>
+
+  <div class="output-section">
+    <h3>Filenames:</h3>
+    <pre id="output"></pre>
+    <button onclick="copyToClipboard('output')" class="copy-button">Copy Filenames</button>
+  </div>
 
   <script>
     function extractFilenames() {
       const input = document.getElementById('urlInput').value;
       const filterText = document.getElementById('customFilter').value;
-      const urls = input.trim().split(/\s+/);
+      
+      // Split URLs using positive lookahead for http/https patterns
+      const urls = input.trim().split(/(?=\s*https?:)/i)
+        .map(url => url.trim())
+        .filter(url => url);
 
+      // Display parsed URLs
+      document.getElementById('urlOutput').textContent = urls.join('\n');
+
+      // Process filenames
       const filenames = urls.map(url => {
+        let filename = '';
         try {
-          const pathname = new URL(url).pathname;
-          let filename = decodeURIComponent(pathname.split('/').pop());
-          if (filterText) {
-            filename = filename.replace(filterText, '');
-          }
-          return filename;
+          const parsedUrl = new URL(url);
+          filename = parsedUrl.pathname.split('/').pop() || '';
         } catch (e) {
-          return 'Invalid URL';
+          // Fallback manual extraction for invalid URLs
+          const cleanUrl = url.split(/[?#]/)[0]; // Remove query/hash
+          filename = cleanUrl.split('/').pop() || '';
         }
+        
+        try {
+          filename = decodeURIComponent(filename);
+        } catch(e) {
+          // Handle invalid URI components
+        }
+        
+        if (filterText) {
+          filename = filename.replace(filterText, '');
+        }
+        return filename;
       });
 
       document.getElementById('output').textContent = filenames.join('\n');
+    }
+
+    function copyToClipboard(elementId) {
+      const element = document.getElementById(elementId);
+      let text = element.value || element.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy:', err);
+        alert('Failed to copy. Please try again.');
+      });
     }
   </script>
 </body>
