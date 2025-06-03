@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Link to Magnet Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        #result a {
+            display: block;
+            word-break: break-all;
+            color: #007bff;
+            text-decoration: none;
+        }
+        #result a:hover {
+            text-decoration: underline;
+        }
+        #result button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Convert Torrent Link to Magnet Link</h1>
+        <input type="text" id="inputLink" placeholder="Paste your torrent link here">
+        <button id="convertBtn">Convert</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            const inputLink = document.getElementById('inputLink').value;
+            try {
+                // Parse the input URL
+                const url = new URL(inputLink);
+                
+                // Split the pathname and filter out empty parts
+                const pathParts = url.pathname.split('/').filter(part => part.length > 0);
+                
+                // Check if the pathname is in the form "/hash/<hash>"
+                if (pathParts.length === 2 && pathParts[0] === "hash") {
+                    const hash = pathParts[1];
+                    const name = url.searchParams.get('name');
+                    
+                    if (name) {
+                        // Create the magnet link
+                        const magnetLink = `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(name)}`;
+                        
+                        // Display the result
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML = ''; // Clear previous content
+                        
+                        // Create the clickable magnet link
+                        const link = document.createElement('a');
+                        link.href = magnetLink;
+                        link.textContent = magnetLink;
+                        resultDiv.appendChild(link);
+                        
+                        // Add a copy button
+                        const copyBtn = document.createElement('button');
+                        copyBtn.textContent = 'Copy';
+                        copyBtn.addEventListener('click', function() {
+                            navigator.clipboard.writeText(magnetLink).then(() => {
+                                alert('Magnet link copied to clipboard');
+                            }).catch(err => {
+                                console.error('Failed to copy: ', err);
+                            });
+                        });
+                        resultDiv.appendChild(copyBtn);
+                    } else {
+                        throw new Error('Missing name parameter');
+                    }
+                } else {
+                    throw new Error('Invalid URL structure');
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Invalid link format. Please ensure the link is in the correct form.';
+            }
+        });
+    </script>
+</body>
+</html>
