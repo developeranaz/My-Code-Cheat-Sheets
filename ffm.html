@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Splitter - No Re-encoding</title>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.6/dist/ffmpeg.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+            opacity: 0.7;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:disabled {
+            background: linear-gradient(to right, #6c757d, #868e96);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input[type="number"] {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        input[type="number"]:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+            display: none;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .log {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .results {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .results h2 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .file-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .file-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-name {
+            flex-grow: 1;
+        }
+        
+        .download-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 600px) {
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Splitter</h1>
+        <p class="subtitle">Split videos without re-encoding in your browser</p>
+        
+        <div class="upload-area" id="uploadArea">
+            <i>📁</i>
+            <h3>Drag & Drop your video here</h3>
+            <p>or click to browse files</p>
+            <input type="file" id="inputVideo" class="file-input" accept="video/*">
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="clipLength">Clip Length (seconds)</label>
+                <input type="number" id="clipLength" value="46" min="1">
+            </div>
+            <div class="control-group">
+                <label for="overlap">Overlap (seconds)</label>
+                <input type="number" id="overlap" value="7" min="0">
+            </div>
+        </div>
+        
+        <button id="processBtn" class="btn" disabled>Split Video</button>
+        
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-header">
+                <span>Processing...</span>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="log" id="log"></div>
+        
+        <div class="results" id="results">
+            <h2>Download Your Video Segments</h2>
+            <div class="file-list" id="fileList"></div>
+        </div>
+    </div>
+
+    <script>
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        const ffmpeg = createFFmpeg({ 
+            log: true,
+            progress: ({ ratio }) => {
+                const progress = Math.round(ratio * 100);
+                document.getElementById('progressBar').style.width = `${progress}%`;
+                document.getElementById('progressText').textContent = `${progress}%`;
+            }
+        });
+        
+        const logDiv = document.getElementById('log');
+        const resultsDiv = document.getElementById('results');
+        const fileListDiv = document.getElementById('fileList');
+        const progressContainer = document.getElementById('progressContainer');
+        const uploadArea = document.getElementById('uploadArea');
+        const inputVideo = document.getElementById('inputVideo');
+        const processBtn = document.getElementById('processBtn');
+        
+        let videoDuration = 0;
+        
+        function log(msg) {
+            logDiv.innerHTML += `<div>${msg}</div>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        // Upload area click handler
+        uploadArea.addEventListener('click', () => {
+            inputVideo.click();
+        });
+        
+        // Drag and drop handlers
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'rgba(255, 255, 255, 0.7)';
+            uploadArea.style.background = 'rgba(255, 255, 255, 0.1)';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            uploadArea.style.background = 'transparent';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            uploadArea.style.background = 'transparent';
+            
+            if (e.dataTransfer.files.length) {
+                inputVideo.files = e.dataTransfer.files;
+                handleFileSelection();
+            }
+        });
+        
+        // File input change handler
+        inputVideo.addEventListener('change', handleFileSelection);
+        
+        function handleFileSelection() {
+            if (inputVideo.files.length) {
+                const file = inputVideo.files[0];
+                uploadArea.innerHTML = `
+                    <i>🎥</i>
+                    <h3>${file.name}</h3>
+                    <p>${(file.size / (1024 * 1024)).toFixed(2)} MB</p>
+                `;
+                processBtn.disabled = false;
+                
+                // Get video duration using video element
+                const video = document.createElement('video');
+                video.preload = 'metadata';
+                video.onloadedmetadata = function() {
+                    videoDuration = Math.floor(video.duration);
+                    log(`Video duration: ${Math.floor(video.duration / 60)}:${(video.duration % 60).toFixed(0).padStart(2, '0')}`);
+                };
+                video.src = URL.createObjectURL(file);
+            }
+        }
+        
+        // Process button click handler
+        processBtn.addEventListener('click', async () => {
+            const file = inputVideo.files[0];
+            if (!file) return;
+            
+            const clipLength = parseInt(document.getElementById('clipLength').value);
+            const overlap = parseInt(document.getElementById('overlap').value);
+            
+            if (clipLength <= overlap) {
+                alert("Clip length must be greater than overlap!");
+                return;
+            }
+            
+            // Reset UI
+            logDiv.style.display = 'block';
+            progressContainer.style.display = 'block';
+            resultsDiv.style.display = 'none';
+            fileListDiv.innerHTML = '';
+            logDiv.innerHTML = '';
+            processBtn.disabled = true;
+            
+            // Load FFmpeg if not loaded
+            if (!ffmpeg.isLoaded()) {
+                log("⏳ Loading ffmpeg.wasm...");
+                await ffmpeg.load();
+                log("✅ ffmpeg.wasm loaded successfully!");
+            }
+            
+            // Write video file to FFmpeg file system
+            log("⏳ Reading video file...");
+            ffmpeg.FS('writeFile', file.name, await fetchFile(file));
+            
+            // Calculate segments
+            let start = 0;
+            let index = 1;
+            const segments = [];
+            
+            while (start < videoDuration) {
+                segments.push({ start, index });
+                start += clipLength - overlap;
+                index++;
+            }
+            
+            log(`⏳ Splitting video into ${segments.length} segments...`);
+            
+            // Process each segment
+            for (const segment of segments) {
+                const outputFile = `part_${segment.index}.mp4`;
+                log(`Creating: ${outputFile} (start=${segment.start}s)`);
+                
+                try {
+                    await ffmpeg.run(
+                        '-ss', String(segment.start),
+                        '-i', file.name,
+                        '-t', String(clipLength),
+                        '-c', 'copy',
+                        outputFile
+                    );
+                    
+                    // Create download link
+                    const data = ffmpeg.FS('readFile', outputFile);
+                    const url = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
+                    
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                        <div class="file-name">${outputFile}</div>
+                        <button class="download-btn" data-url="${url}" data-filename="${outputFile}">Download</button>
+                    `;
+                    fileListDiv.appendChild(fileItem);
+                    
+                } catch (error) {
+                    log(`❌ Error creating ${outputFile}: ${error.message}`);
+                }
+            }
+            
+            // Add event listeners to download buttons
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    const filename = this.getAttribute('data-filename');
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                });
+            });
+            
+            log("✅ Video splitting complete!");
+            resultsDiv.style.display = 'block';
+            processBtn.disabled = false;
+        });
+    </script>
+</body>
+</html>
