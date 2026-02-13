@@ -59,6 +59,11 @@
       right: 5px;
       top: 5px;
     }
+    .help-text {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
     @media (max-width: 600px) {
       body {
         padding: 10px;
@@ -85,8 +90,12 @@
   </div>
 
   <div class="input-group">
-    <label>Text to Remove from Filenames (optional):</label>
-    <input type="text" id="customFilter" placeholder="e.g. www.1extra.day - " />
+    <label>Text Pattern to Remove from Filenames:</label>
+    <input type="text" id="customFilter" value="www.* - " placeholder="e.g. www.* - " />
+    <div class="help-text">
+      Use "www.* - " to remove patterns like "www.1TamilMV.tube - ", "www.1blasters.ibe - ", etc.
+      <br>Or enter exact text to remove (e.g., "www.example.com - ")
+    </div>
     <div class="copy-btn-container">
       <button onclick="copyToClipboard('customFilter')" class="copy-button">Copy</button>
     </div>
@@ -138,7 +147,20 @@
         }
         
         if (filterText) {
-          filename = filename.replace(filterText, '');
+          // Check if using wildcard pattern (www.* - )
+          if (filterText.includes('*')) {
+            // Convert pattern to regex
+            // This handles patterns like "www.* - " to match "www.anything - "
+            const regexPattern = filterText
+              .replace(/[.+?^${}()|[\]\\]/g, '\\$&') // Escape special chars except *
+              .replace(/\*/g, '[^\\s]*'); // Replace * with non-whitespace matcher
+            
+            const regex = new RegExp('^' + regexPattern, 'i');
+            filename = filename.replace(regex, '');
+          } else {
+            // Exact text removal
+            filename = filename.replace(filterText, '');
+          }
         }
         return filename;
       });
@@ -148,14 +170,51 @@
 
     function copyToClipboard(elementId) {
       const element = document.getElementById(elementId);
-      let text = element.value || element.textContent;
+      // Get the text to copy: for input/textarea use .value, for others use .textContent
+      const text = element.value || element.textContent;
+
+      // Try using the modern Clipboard API first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Copied to clipboard!');
+        }).catch(err => {
+          console.error('Clipboard API failed, trying fallback:', err);
+          fallbackCopy(text);
+        });
+      } else {
+        // Clipboard API not available, use fallback
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      // Create a temporary textarea element
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      // Make it invisible
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      textarea.style.pointerEvents = 'none';
+      document.body.appendChild(textarea);
       
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Copied to clipboard!');
-      }).catch(err => {
-        console.error('Failed to copy:', err);
-        alert('Failed to copy. Please try again.');
-      });
+      // Select and copy
+      textarea.select();
+      textarea.setSelectionRange(0, 99999); // For mobile devices
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          alert('Copied to clipboard!');
+        } else {
+          alert('Copy failed. Please copy manually.');
+        }
+      } catch (err) {
+        console.error('Fallback copy error:', err);
+        alert('Copy failed. Please copy manually.');
+      }
+      
+      // Clean up
+      document.body.removeChild(textarea);
     }
   </script>
 </body>
