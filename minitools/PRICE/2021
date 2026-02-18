@@ -1,1 +1,70 @@
-TEST
+curl 'https://price.kerala.gov.in/price3_pmu/callSpecList_home.htm' \
+  -H 'Accept: text/plain, */*; q=0.01' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=755A11EA7EA6F431CF04E95C5CD1630D' \
+  -H 'Origin: https://price.kerala.gov.in' \
+  -H 'Referer: https://price.kerala.gov.in/price3_pmu/call_databook_home.htm' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-GPC: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'sec-ch-ua: "Brave";v="135", "Not-A.Brand";v="8", "Chromium";v="135"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw 'price_token=122&databookid=2&subhead=2&soryear=2022&genid=34&tendertype=Non-Tender&worknatureid=9'
+
+curl 'https://price.kerala.gov.in/price3_pmu/callSpecList_home.htm' \
+  -H 'Accept: text/plain, */*; q=0.01' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=755A11EA7EA6F431CF04E95C5CD1630D' \
+  -H 'Origin: https://price.kerala.gov.in' \
+  -H 'Referer: https://price.kerala.gov.in/price3_pmu/call_databook_home.htm' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-GPC: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'sec-ch-ua: "Brave";v="135", "Not-A.Brand";v="8", "Chromium";v="135"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw 'price_token=122&databookid=2&subhead=2&soryear=2022&genid=34&tendertype=Non-Tender&worknatureid=9' ;
+curl 'https://price.kerala.gov.in/price3_pmu/call_databook_data_analysis_home.htm' \
+  -H 'Accept: text/plain, */*; q=0.01' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=755A11EA7EA6F431CF04E95C5CD1630D' \
+  -H 'Origin: https://price.kerala.gov.in' \
+  -H 'Referer: https://price.kerala.gov.in/price3_pmu/call_databook_home.htm' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-GPC: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'sec-ch-ua: "Brave";v="135", "Not-A.Brand";v="8", "Chromium";v="135"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw 'price_token=122&databookid=2&subhead=2&spec_code=2.1.1&soryear=2022&genid=34&tendertype=Non-Tender&worknatureid=9' ;
+curl 'https://price.kerala.gov.in/price3_pmu/price_analytics/img/watermark-a4.png' \
+  -H 'Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Connection: keep-alive' \
+  -b 'JSESSIONID=755A11EA7EA6F431CF04E95C5CD1630D' \
+  -H 'Referer: https://price.kerala.gov.in/price3_pmu/call_databook_home.htm' \
+  -H 'Sec-Fetch-Dest: image' \
+  -H 'Sec-Fetch-Mode: no-cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-GPC: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Brave";v="135", "Not-A.Brand";v="8", "Chromium";v="135"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+
